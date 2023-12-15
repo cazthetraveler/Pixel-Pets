@@ -1,0 +1,2 @@
+DROP DATABASE IF EXISTS pixelpet_db;
+CREATE DATABASE pixelpet_db;

@@ -1,0 +1,21 @@
+<div>here is where you can take care of your pet.</div>
+
+<div>
+    <h2>{{pet.pet_name}} the {{pet.pet_type}}</h2>
+</div>
+
+<div class="stats">
+    <h3 id="hunger" value="{{pet.hunger_level}}">Hunger Level: {{pet.hunger_level}} / 100</h3>
+    <h3 id="energy" value="{{pet.energy_level}}">Energy Level: {{pet.energy_level}} / 100</h3>
+    <h3 id="friendship" value="{{pet.friendship_level}}">Friendship Level: {{pet.friendship_level}} / 255</h3>
+</div>
+
+{{!-- each button will post an update basically to the pet's stats --}}
+
+<div class="actions">
+    <button id="feed" type="button">Feed</button>
+    <button id="nap" type="button">Nap</button>
+    <button id="play" type="button">Play</button>
+</div>
+
+<script src="/js/pet-care.js"></script>

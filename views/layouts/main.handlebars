@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pixel Pets</title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+
+{{!-- https://wireframe.cc/sk9M31 --}}
+
+<body>
+    
+    <header>
+        <nav>
+            <ul>
+                <li><a href="/">Home</a></li>
+                {{#if logged_in}}
+                <li><a href="/dashboard">Dashboard</a></li>
+                <li><button type="button" id="logout-button">Log Out</button></li>
+                {{else}}
+                <li><a href="/login">Login/Register</a></li>
+                {{/if}}
+            </ul>
+        </nav>
+    </header>
+
+    {{{body}}}
+
+    <footer>Made by Luis Olmos &#40●'◡'●&#41</footer>
+    
+</body>
+
+{{#if logged_in}}
+<script src="/js/logout.js"></script>
+{{/if}}
+</html>
+
+{{!-- code new main handlebars below :PP --}}

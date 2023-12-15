@@ -1,0 +1,51 @@
+<div>This is the dashboard, you can create pets and view them here. Clicking on an existing pet will take you to a page where you can interact with it.</div>
+<div>Welcome {{username}}!!</div>
+
+<div>
+    <button type="button" id="add-pet">Add a Pet</button>
+</div>
+
+{{!-- we should change this to a modal when we start styling --}}
+<div class="pet-creation"> 
+    <form id="create-pet-form">
+        <h2>Select a pet!</h2>
+        <div>
+            <input type="radio" name="pet-type" value="Penguin" id="1">
+            <label for="Penguin">Penguin</label>
+            <input type="radio" name="pet-type" value="Mouse" id="2">
+            <label for="Mouse">Mouse</label>
+            <input type="radio" name="pet-type" value="Bunny" id="3">
+            <label for="Bunny">Bunny</label>
+            <input type="radio" name="pet-type" value="Lizard" id="4">
+            <label for="Lizard">Lizard</label>
+        </div>
+
+        <div>
+            <label for="pet-name">Enter a name:</label>
+            <input type="text" id="pet-name">
+        </div>
+
+        <button type="submit">Create</button>
+    </form>
+</div>
+
+{{#if pets}}
+<h2>Your pets:</h2>
+<div>
+    {{#each pets as |pet|}}
+        <div>
+            <a href="/pets/{{pet.id}}">
+                <h3>{{pet.pet_name}} the {{pet.pet_type}}</h3>
+            </a>
+            {{#checkHunger pet.hunger_level}}
+            {{/checkHunger}}
+            {{#checkEnergy pet.energy_level}}
+            {{/checkEnergy}}
+            {{#checkFriendship pet.friendship_level}}
+            {{/checkFriendship}}
+        </div>
+    {{/each}}
+</div>
+{{/if}}
+
+<script src="/js/create-pet.js"></script>
