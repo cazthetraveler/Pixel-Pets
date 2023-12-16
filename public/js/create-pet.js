@@ -1,8 +1,13 @@
 const addPetBtn = document.querySelector("#add-pet");
 const petCreation = document.querySelector(".pet-creation");
+const closeBtnCreate = document.querySelector("#create-close");
 
 addPetBtn.addEventListener("click", function() {
     petCreation.style.display = "block";
+});
+
+closeBtnCreate.addEventListener("click", function() {
+    petCreation.style.display = "none";
 });
 
 const petForm = async (event) => {

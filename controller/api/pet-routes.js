@@ -3,94 +3,57 @@ const {User, Pet} = require("../../models");
 
 //create pet
 router.post("/", async (req, res) => {
-    try {
+    try { 
+        //limit the number of pets a user can have
+        const userId = req.session.user_id;
+        const user = await User.findByPk(userId);
+        if (user.petCount >= 3) {
+            return res.status(403).json({message: "You have reached the maximum number of pets."});
+        };
+
         const dbPetData = await Pet.create({
             pet_name: req.body.pet_name,
             pet_type: req.body.pet_type,
             user_id: req.session.user_id,
         });
 
+        //add one to pets.
+        user.petCount += 1;
+        await user.save();
+
+        console.log(user.username + " currently has " + user.petCount + " pets");
+
         res.status(200).json(dbPetData);
         console.log(dbPetData);
     } catch (error) {
         res.status(500).json(error);
+        console.log(error);
     };
 });
 
 //delete pet
 
-// // //feed pet
+router.delete("/", async (req, res) => {
+    const userId = req.session.user_id;
+    const user = await User.findByPk(userId);
 
-// router.post("/:id", async (req, res) => {
-//     try {
-//         const petId = req.params.id;
-//         const {hunger_level} = req.body;
+    const petId = req.body.id;
+    console.log(petId);
+    try {
+        const pet = await Pet.findByPk(petId);
+        if (!pet) {
+            return res.status(404).json({message: "Pet not found!"});
+        };
 
-//         const updatePetHunger = await Pet.update(
-//             {hunger_level},
-//             {where: {
-//                 id: petId,
-//             }},
-//         );
+        user.petCount -= 1;
+        await user.save();
 
-//         if (updatePetHunger[0] === 1) {
-//             res.status(200).json({message: "hunger updated!!"});
-//         }
-
-//         console.log(updatePetHunger);
-//     } catch (error) {
-//         console.error(error);
-//         res.status(500).json({message: "oop"});
-//     };
-// });
-
-// //nap pet
-// router.post("/:id", async (req, res) => {
-//     try {
-//         const petId = req.params.id;
-//         const {hunger_level, energy_level} = req.body;
-
-//         const updatePetEnergy = await Pet.update(
-//             {hunger_level, energy_level},
-//             {where: {
-//                 id: petId,
-//             }},
-//         );
-
-//         if (updatePetEnergy) {
-//             res.status(200).json({message: "energy updated!!"});
-//         };
-
-//         console.log(updatePetEnergy);
-//     } catch (error) {
-//         console.error(error);
-//         res.status(500).json({message: "oop"});
-//     };
-// });
-
-// //play pet
-// router.post("/:id", async (req, res) => {
-//     try {
-//         const petId = req.params.id;
-//         const {hunger_level, energy_level, friendship_level} = req.body;
-
-//         const updatePet = await Pet.update(
-//             {hunger_level, energy_level, friendship_level},
-//             {where: {
-//                 id: petId,
-//             }},
-//         );
-
-//         if (updatePet[0] > 0) {
-//             res.status(200).json({message: "hunger, energy, friendship updated!!"});
-//         } else {
-//             res.status(404).json({message: "Pet not found :("});
-//         };
-//     } catch (error) {
-//         console.error(error);
-//         res.status(500).json({message: "oop"});
-//     };
-// });
+        await pet.destroy();
+        res.status(200).json({message: "Pet deleted successfully!"});
+    } catch (error) {
+        res.status(500).json({message: "Failed to delete pet!"});
+    };
+});
 
 router.post("/:id", async (req, res) => {
     try {

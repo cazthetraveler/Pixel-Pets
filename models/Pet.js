@@ -51,7 +51,7 @@ Pet.init(
                 max: 255,
                 min: 0,
             },
-            defaultValue: 150,
+            defaultValue: 100,
         },
     },
     {

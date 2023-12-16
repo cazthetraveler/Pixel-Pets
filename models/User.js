@@ -27,6 +27,15 @@ User.init(
                 len: [8],
             },
         },
+        petCount: {
+            type: DataTypes.INTEGER,
+            allowNull: false,
+            defaultValue: 0,
+            validate: {
+                min: 0,
+                max: 3,
+            },
+        },
     },
     {
         hooks: {

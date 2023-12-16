@@ -1,24 +1,32 @@
-<div>login and register forms goes here :PP</div>
+<div class="login-register">
+    <div class="login-section">
+        <h2>Login</h2>
+        <form id="login-form">
+            <label for="username-login">Username:</label>
+            <input type="text" id="username-login">
 
-<form id="login-form">
-    <label for="username-login">Username:</label>
-    <input type="text" id="username-login">
+            <label for="password-login">Password:</label>
+            <input type="password" id="password-login">
 
-    <label for="password-login">Password:</label>
-    <input type="password" id="password-login">
+            <button type="submit">Login</button>
+        </form>
+    </div>
+    
+    <div class="v-divide"></div>
 
-    <button type="submit">Login</button>
-</form>
+    <div class="register-section">
+        <h2>Register</h2>
+        <form id="register-form">
+            <label for="username-register">Username:</label>
+            <input type="text" id="username-register">
 
-<form id="register-form">
-    <label for="username-register">Username:</label>
-    <input type="text" id="username-register">
+            <label for="password-register">Password:</label>
+            <input type="password" id="password-register">
 
-    <label for="password-register">Password:</label>
-    <input type="password" id="password-register">
-
-    <button type="submit">Register</button>
-</form>
+            <button type="submit">Register</button>
+        </form>
+    </div>
+</div>
 
 <script src="/js/login.js"></script>
 <script src="/js/register.js"></script>

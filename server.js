@@ -17,7 +17,7 @@ const PORT = process.env.PORT || 3001;
 const sess = {
     secret: process.env.SESSKEY,
     cookie: {
-        maxAge: 3 * 60 * 60 * 1000,
+        maxAge: 60 * 60 * 1000,
     },
     resave: false,
     saveUninitialized: true,
@@ -34,6 +34,12 @@ app.set("view engine", "handlebars");
 app.use(express.json());
 app.use(express.urlencoded({extended:true}));
 app.use(express.static(path.join(__dirname, "public")));
+
+// app.post("/api/clear-session", (req, res) => {
+//     req.session.destroy(() => {
+//         req.statusCode(204).end();
+//     });
+// });
 
 app.use(routes);
 

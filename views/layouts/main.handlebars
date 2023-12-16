@@ -4,22 +4,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pixel Pets</title>
-    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="icon" type="image/x-icon" href="/images/pixel-pets-logo.png">
+    <script src="https://kit.fontawesome.com/8b8c9d14eb.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="/css/main.css">
 </head>
 
 {{!-- https://wireframe.cc/sk9M31 --}}
 
 <body>
-    
     <header>
+        <div class="logo">
+            <a href="/"><img src="/images/pixel-pets-logo.png"></a>
+        </div>
         <nav>
-            <ul>
+            <ul class="nav-links">
                 <li><a href="/">Home</a></li>
                 {{#if logged_in}}
                 <li><a href="/dashboard">Dashboard</a></li>
                 <li><button type="button" id="logout-button">Log Out</button></li>
                 {{else}}
-                <li><a href="/login">Login/Register</a></li>
+                <li><a href="/login">Login | Register</a></li>
                 {{/if}}
             </ul>
         </nav>
@@ -27,13 +31,12 @@
 
     {{{body}}}
 
-    <footer>Made by Luis Olmos &#40●'◡'●&#41</footer>
+    <footer>Made by <a target="_blank" href="https://github.com/cazthetraveler">Luis Olmos</a> &#40●'◡'●&#41</footer>
     
 </body>
 
 {{#if logged_in}}
 <script src="/js/logout.js"></script>
 {{/if}}
-</html>
 
-{{!-- code new main handlebars below :PP --}}
+</html>

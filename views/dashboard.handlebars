@@ -1,51 +1,98 @@
-<div>This is the dashboard, you can create pets and view them here. Clicking on an existing pet will take you to a page where you can interact with it.</div>
-<div>Welcome {{username}}!!</div>
+<div class="dashboard">
+    <div class="bar">
+        <h2>Welcome {{username}}!</h2>
+        {{!-- <h2>{{petCount}}</h2> --}}
+        <div class="pet-buttons">
+            {{#checkPetCount petCount}}
+            {{/checkPetCount}}
+            {{#if pets}}
+            <button type="button" id="delete-pet"><i class="fa-solid fa-trash"></i></button>
+            {{/if}}
+        </div>
+    </div>
 
-<div>
-    <button type="button" id="add-pet">Add a Pet</button>
+    <div class="pets-view">
+        {{#if pets}}
+        <h2>Your Pets:</h2>
+        <div class="your-pets">
+            {{#each pets as |pet|}}
+            <div class="pet">
+                <a href="/pets/{{pet.id}}">
+                    <img src="https://placehold.co/150" alt="placeholder image for pet">
+                </a>
+                <h3>{{pet.pet_name}} the {{pet.pet_type}}</h3>
+                {{#checkHunger pet.hunger_level}}
+                {{/checkHunger}}
+                {{#checkEnergy pet.energy_level}}
+                {{/checkEnergy}}
+                {{#checkFriendship pet.friendship_level}}
+                {{/checkFriendship}}
+            </div>
+            {{/each}}
+        </div>
+        {{else}}
+        <h2>No pets yet! Create one!</h2>
+        {{/if}}
+    </div>
 </div>
 
 {{!-- we should change this to a modal when we start styling --}}
-<div class="pet-creation"> 
-    <form id="create-pet-form">
-        <h2>Select a pet!</h2>
-        <div>
-            <input type="radio" name="pet-type" value="Penguin" id="1">
-            <label for="Penguin">Penguin</label>
-            <input type="radio" name="pet-type" value="Mouse" id="2">
-            <label for="Mouse">Mouse</label>
-            <input type="radio" name="pet-type" value="Bunny" id="3">
-            <label for="Bunny">Bunny</label>
-            <input type="radio" name="pet-type" value="Lizard" id="4">
-            <label for="Lizard">Lizard</label>
-        </div>
 
-        <div>
-            <label for="pet-name">Enter a name:</label>
-            <input type="text" id="pet-name">
-        </div>
 
-        <button type="submit">Create</button>
-    </form>
+<div class="pet-creation modal">
+        <button type="button" id="create-close"><i class="fa-solid fa-xmark"></i></button>
+    <div class="modal-container"> 
+        <form id="create-pet-form">
+            <h2>Select a pet!</h2>
+            <div class="pet-choices">
+                <label>
+                    <input type="radio" name="pet-type" value="Mouse" id="1">
+                    <img src="https://placehold.co/100" alt="placeholder image for pet choice">
+                </label>
+                <label>
+                    <input type="radio" name="pet-type" value="Bunny" id="2">
+                    <img src="https://placehold.co/100" alt="placeholder image for pet choice">
+                </label>
+                <label>
+                    <input type="radio" name="pet-type" value="Parakeet" id="3">
+                    <img src="https://placehold.co/100" alt="placeholder image for pet choice">
+                </label>
+            </div>
+
+            <div>
+                <label for="pet-name">Enter a name:</label>
+                <input type="text" id="pet-name">
+            </div>
+
+            <button type="submit">Create</button>
+        </form>
+    </div>
 </div>
+
+<div class="pet-deletion modal">
+    <button type="button" id="delete-close"><i class="fa-solid fa-xmark"></i></button>
+    <div class="modal-container"> 
+        <form id="delete-pet-form">
+            <h2>Select a pet!</h2>
+            <div>
+                <label for="sel-pet-del">Choose a pet:</label>
+                <select id="sel-pet-del" name="sel-pet-del">
+                    {{#if pets}}
+                    {{#each pets as |pet|}}
+                    <option value="{{pet.id}}">{{pet.pet_name}}</option>
+                    {{/each}}
+                    {{/if}}
+                </select>
+            </div>
+
+            <button type="submit">Delete</button>
+        </form>
+    </div>
+</div>
+
+{{#checkPetCountScript petCount}}
+{{/checkPetCountScript}}
 
 {{#if pets}}
-<h2>Your pets:</h2>
-<div>
-    {{#each pets as |pet|}}
-        <div>
-            <a href="/pets/{{pet.id}}">
-                <h3>{{pet.pet_name}} the {{pet.pet_type}}</h3>
-            </a>
-            {{#checkHunger pet.hunger_level}}
-            {{/checkHunger}}
-            {{#checkEnergy pet.energy_level}}
-            {{/checkEnergy}}
-            {{#checkFriendship pet.friendship_level}}
-            {{/checkFriendship}}
-        </div>
-    {{/each}}
-</div>
+<script src="/js/delete-pet.js"></script>
 {{/if}}
-
-<script src="/js/create-pet.js"></script>

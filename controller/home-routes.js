@@ -42,7 +42,7 @@ router.get("/dashboard", async (req, res) => {
         ]);
 
         const pets = petData.map((pet) => pet.get({ plain: true }));
-        res.render("dashboard", {logged_in:req.session.logged_in, username:userData.username, pets: pets});
+        res.render("dashboard", {logged_in:req.session.logged_in, username:userData.username, petCount:userData.petCount, pets: pets});
     } catch (error) {
         res.status(500).json(error);
     };
