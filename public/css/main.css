@@ -64,6 +64,21 @@ footer a:hover {
     color: var(--white);
 }
 
+/* homepage */
+
+.home-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.homepage {
+    background-image: linear-gradient(135deg, deeppink, purple);
+    height: 90vh;
+    width: 95vw;
+}
+
 /* login page */
 
 .login-register {
@@ -234,4 +249,69 @@ input[type="radio"]:hover + img {
 
 input[type="radio"]:checked + img {
     outline: 3px solid yellow;
+}
+
+/* pet dashboard */
+
+.pet-dashboard {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 3rem;
+}
+
+.pet-specs {
+    text-align: center;
+}
+
+.pet-name {
+    margin-bottom: 1rem;
+}
+
+.stats {
+    display: flex;
+    justify-content: space-between;
+    padding: 1.5rem;
+    background-color: var(--white);
+    border-radius: 10px;
+}
+
+.stats h3 {
+    margin: 0 1.75rem;
+}
+
+.actions {
+    padding: 2rem;
+}
+
+.actions i {
+    font-size: 3rem;
+    padding: 1rem;
+}
+
+.actions button {
+    background-color: var(--white);
+    color: var(--black);
+    border-radius: 50%;
+    margin: 0 2rem;
+    border: none;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.actions button:hover {
+    color: var(--white);
+    background-color: var(--black);
+    transition: 0.3s;
+}
+
+.status-bar {
+    width: 100px;
+    background-color: gray;
+}
+
+.hunger-bar {
+    width: 50%;
+    background-color: green;
 }
