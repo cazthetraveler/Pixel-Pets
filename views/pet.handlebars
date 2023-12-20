@@ -1,25 +1,56 @@
-<div class="pet-dashboard">
-    <div class="pet-image">
+{{!-- <div class="pet-dashboard">
+    <div class="pet-image"> --}}
         {{!-- <img src="https://www.placehold.co/300" alt="pet placeholder image, maybe use gif for animation"> --}}
-        <img src="/images/pets/pixel_cat.gif" alt="pixel cat gif for now lol">
-    </div>
+        {{!-- <img width="250" height="250" src="/images/pets/pixel_{{pet.pet_type}}.png" alt="{{pet.pet_type}} portrait, will be a gif later :PP"> --}}
+    {{!-- </div>
     <div class="pet-specs">
         <div class="pet-info">
             <h2 class="pet-name">{{pet.pet_name}} the {{pet.pet_type}}</h2>
             <div class="stats">
-                <h3 id="hunger" value="{{pet.hunger_level}}">Hunger Level: {{pet.hunger_level}} / 100</h3>
+                <h3 id="hunger" value="{{pet.hunger_level}}">Hunger Level: {{pet.hunger_level}} / 100</h3> --}}
                 {{!-- <div class="status-bar">
                     <div value="{{pet.hunger_level}}" class="hunger-bar"></div>
                 </div> maybe we could add this another time :PP --}}
-                <h3 id="energy" value="{{pet.energy_level}}">Energy Level: {{pet.energy_level}} / 100</h3>
+                {{!-- <h3 id="energy" value="{{pet.energy_level}}">Energy Level: {{pet.energy_level}} / 100</h3>
                 <h3 id="friendship" value="{{pet.friendship_level}}">Friendship Level: {{pet.friendship_level}} / 255</h3>
             </div>
         </div>
-        <div class="actions">
-            <button id="feed" type="button"><i class="fa-solid fa-utensils"></i></button>
-            <button id="nap" type="button"><i class="fa-solid fa-moon"></i></button>
-            <button id="play" type="button"><i class="fa-solid fa-gamepad"></i></button>
+    </div>
+</div> --}}
+
+
+
+{{!-- okay lets redo this because it's not that good lolll --}}
+
+<div class="pet-dashboard">
+    <div class="pet-specs">
+        <h2>{{pet.pet_name}} the {{pet.pet_type}}</h2>
+        <div class="pet-stats">
+            <div class="hunger-stats">
+                <h3>Hunger:</h3>
+                <div class="hunger-bar">
+                    <div class="hunger-load" id="hunger" value="{{pet.hunger_level}}" style="width:{{pet.hunger_level}}%"></div>
+                </div>
+            </div>
+            <div class="energy-stats">
+                <h3>Energy:</h3>
+                <div class="energy-bar">
+                    <div class="energy-load" id="energy" value="{{pet.energy_level}}" style="width:{{pet.energy_level}}%"></div>
+                </div>
+            </div>
+            <div class="hunger-stats">
+                <h3>Friendship:</h3>
+                <div class="friendship-bar">
+                    <div class="friendship-load" id="friendship" value="{{pet.friendship_level}}" style="width:{{pet.friendship_level}}%"></div>
+                </div>
+            </div>
         </div>
+    </div>
+    <div class="pet-room"></div>
+    <div class="pet-actions">
+        <button id="feed" type="button"><i class="fa-solid fa-utensils"></i></button>
+        <button id="nap" type="button"><i class="fa-solid fa-moon"></i></button>
+        <button id="play" type="button"><i class="fa-solid fa-gamepad"></i></button>
     </div>
 </div>
 

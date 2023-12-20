@@ -214,6 +214,10 @@ footer a:hover {
     text-align: center;
 }
 
+.pet-portrait {
+    outline: .25rem solid var(--black);
+}
+
 /* modal */
 
 .modal {
@@ -253,44 +257,81 @@ input[type="radio"]:checked + img {
 
 /* pet dashboard */
 
-.pet-dashboard {
+/* .pet-dashboard {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     padding: 3rem;
+} */
+
+.pet-dashboard {
+    display: flex;
+    justify-content: space-around;
+    margin: 1rem;
 }
 
-.pet-specs {
+.pet-specs, .pet-actions {
+    height: 80vh;
+    width: 15vw;
     text-align: center;
 }
 
-.pet-name {
-    margin-bottom: 1rem;
+.pet-room {
+    height: 80vh;
+    width: 50vw;
 }
 
-.stats {
+.pet-specs, .pet-actions, .pet-room {
+    background-color: var(--white);
+}
+
+.hunger-stats, .energy-stats, .friendship-stats {
+    padding: 1rem;
+}
+
+.hunger-bar, .energy-bar, .friendship-bar {
+    height: 1rem;
+    width: 100%;
+    border-radius: 1rem;
+    background-color: gray;
+}
+.hunger-load, .energy-load, .friendship-load {
+    height: 1rem;
+    border-radius: 1rem;
+    background-color: green;
+}
+
+/* .pet-specs {
+    text-align: center;
+} */
+
+/* .pet-name {
+    margin-bottom: 1rem;
+} */
+
+/* .stats {
     display: flex;
     justify-content: space-between;
     padding: 1.5rem;
     background-color: var(--white);
     border-radius: 10px;
-}
+} */
 
-.stats h3 {
+/* .stats h3 {
     margin: 0 1.75rem;
-}
+} */
 
-.actions {
+/* .actions {
     padding: 2rem;
-}
+} */
 
-.actions i {
+/* .actions i {
     font-size: 3rem;
     padding: 1rem;
-}
+} */
 
-.actions button {
+/* .actions button {
     background-color: var(--white);
     color: var(--black);
     border-radius: 50%;
@@ -298,20 +339,20 @@ input[type="radio"]:checked + img {
     border: none;
     cursor: pointer;
     transition: 0.3s;
-}
+} */
 
-.actions button:hover {
+/* .actions button:hover {
     color: var(--white);
     background-color: var(--black);
     transition: 0.3s;
-}
+} */
 
-.status-bar {
+/* .status-bar {
     width: 100px;
     background-color: gray;
-}
+} */
 
-.hunger-bar {
+/* .hunger-bar {
     width: 50%;
     background-color: green;
-}
+} */

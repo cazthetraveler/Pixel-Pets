@@ -48,10 +48,18 @@ Pet.init(
             type: DataTypes.INTEGER,
             allowNull: false,
             validate: {
-                max: 255,
+                max: 100,
                 min: 0,
             },
-            defaultValue: 100,
+            defaultValue: 20,
+        },
+        favorite_food: {
+            type: DataTypes.STRING,
+            allowNull: false,
+        },
+        hated_food: {
+            type: DataTypes.STRING,
+            allowNull: false,
         },
     },
     {

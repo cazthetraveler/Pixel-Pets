@@ -15,6 +15,8 @@ router.post("/", async (req, res) => {
             pet_name: req.body.pet_name,
             pet_type: req.body.pet_type,
             user_id: req.session.user_id,
+            favorite_food: req.body.favorite_food,
+            hated_food: req.body.hated_food,
         });
 
         //add one to pets.

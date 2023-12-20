@@ -18,7 +18,7 @@
             {{#each pets as |pet|}}
             <div class="pet">
                 <a href="/pets/{{pet.id}}">
-                    <img src="https://placehold.co/150" alt="placeholder image for pet">
+                    <img class="pet-portrait" width="150" height="150" src="/images/pets/pixel_{{pet.pet_type}}.png" alt="{{pet.pet_type}} portrait">
                 </a>
                 <h3>{{pet.pet_name}} the {{pet.pet_type}}</h3>
                 {{#checkHunger pet.hunger_level}}
@@ -27,6 +27,7 @@
                 {{/checkEnergy}}
                 {{#checkFriendship pet.friendship_level}}
                 {{/checkFriendship}}
+                <p>Your pet likes {{pet.favorite_food}}, but hates {{pet.hated_food}}. remove this later lol</p>
             </div>
             {{/each}}
         </div>
@@ -47,10 +48,10 @@
             <div class="pet-choices">
                 <label>
                     <input type="radio" name="pet-type" value="Mouse" id="1">
-                    <img src="https://placehold.co/100" alt="placeholder image for pet choice">
+                    <img width="100" height="100" src="/images/pets/pixel_mouse.png" alt="pixel mouse portrait">
                 </label>
                 <label>
-                    <input type="radio" name="pet-type" value="Bunny" id="2">
+                    <input type="radio" name="pet-type" value="Frog" id="2">
                     <img src="https://placehold.co/100" alt="placeholder image for pet choice">
                 </label>
                 <label>

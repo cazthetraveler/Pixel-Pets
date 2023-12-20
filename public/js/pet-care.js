@@ -107,37 +107,31 @@ const energyEl = document.querySelector("#energy");
 const friendshipEl = document.querySelector("#friendship");
 
 if (hungerLv >= 75) {
-    hungerEl.style.color = "green";
+    hungerEl.style.backgroundColor = "green";
 } else if (hungerLv >= 50) {
-    hungerEl.style.color = "blue";
+    hungerEl.style.backgroundColor = "blue";
 } else if (hungerLv >= 25) {
-    hungerEl.style.color = "orange";
+    hungerEl.style.backgroundColor = "orange";
 } else if (hungerLv >= 0) {
-    hungerEl.style.color = "red";
+    hungerEl.style.backgroundColor = "red";
 };
 
 if (energyLv >= 75) {
-    energyEl.style.color = "green";
+    energyEl.style.backgroundColor = "green";
 } else if (energyLv >= 50) {
-    energyEl.style.color = "blue";
+    energyEl.style.backgroundColor = "blue";
 } else if (energyLv >= 25) {
-    energyEl.style.color = "orange";
+    energyEl.style.backgroundColor = "orange";
 } else if (energyLv >= 0) {
-    energyEl.style.color = "red";
+    energyEl.style.backgroundColor = "red";
 };
 
-if (friendshipLv === 255) {
-    friendshipEl.style.color = "pink";
-} else if (friendshipLv >= 250) {
-    friendshipEl.style.color = "purple";
-} else if (friendshipLv >= 200) {
-    friendshipEl.style.color = "blue";
-} else if (friendshipLv >= 150) {
-    friendshipEl.style.color = "green";
-} else if (friendshipLv >= 100) {
-    friendshipEl.style.color = "yellow";
+if (friendshipLv >= 75) {
+    friendshipEl.style.backgroundColor = "green";
 } else if (friendshipLv >= 50) {
-    friendshipEl.style.color = "red";
-} else {
-    friendshipEl.style.color = "black";
+    friendshipEl.style.backgroundColor = "blue";
+} else if (friendshipLv >= 25) {
+    friendshipEl.style.backgroundColor = "orange";
+} else if (friendshipLv >= 0) {
+    friendshipEl.style.backgroundColor = "red";
 };
