@@ -69,7 +69,7 @@ router.post("/:id", async (req, res) => {
         switch (action) {
             case "feed":
                 updatePet = await Pet.update(
-                    { hunger_level },
+                    { hunger_level, friendship_level },
                     { where: { id: petId } }
                 );
                 break;
@@ -100,5 +100,17 @@ router.post("/:id", async (req, res) => {
     }
 });
 
+// router.get('/:id/favorite-foods', (req, res) => {
+//     const petId = req.params.id;
+  
+//     // Check if the petId is valid
+//     if (!petId) {
+//       return res.status(404).json({ error: 'Pet not found' });
+//     }
+  
+//     const favoriteFoods = req.params.favorite_food;
+//     console.log(favoriteFoods);
+//     res.json({ favoriteFoods });
+//   });
 
 module.exports = router;

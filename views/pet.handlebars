@@ -24,7 +24,7 @@
 
 <div class="pet-dashboard">
     <div class="pet-specs">
-        <h2>{{pet.pet_name}} the {{pet.pet_type}}</h2>
+        <h2 id="pet-type" data-pettype="{{pet.pet_type}}">{{pet.pet_name}} the {{pet.pet_type}}</h2>
         <div class="pet-stats">
             <div class="hunger-stats">
                 <h3>Hunger:</h3>
@@ -45,11 +45,26 @@
                 </div>
             </div>
         </div>
+        <div class="pet-likes">
+            <h3>Likes:</h3>
+            <p class="favorite-food">{{pet.favorite_food}}</p>
+            <h3>Disikes:</h3>
+            <p class="hated-food">{{pet.hated_food}}</p>
+        </div>
     </div>
-    <div class="pet-room"></div>
+    <div class="pet-room">
+        <img id="pet-gif" src="/images/pets/pixel_{{pet.pet_type}}_anim.gif" alt="gif of {{pet.pet_type}} goes here :)" oncontextmenu="return false;" draggable="false">
+    </div>
     <div class="pet-actions">
-        <button id="feed" type="button"><i class="fa-solid fa-utensils"></i></button>
+        <h3>Food:</h3>
+        <div class="feed-pet">
+            <button class="feed" value="Cheese" type="button">Cheese</button>
+            <button class="feed" value="Carrot" type="button">Carrot</button>
+            <button class="feed" value="Soop" type="button">Soop</button>
+        </div>
+        <h3>Sleep:</h3>
         <button id="nap" type="button"><i class="fa-solid fa-moon"></i></button>
+        <h3>Play:</h3>
         <button id="play" type="button"><i class="fa-solid fa-gamepad"></i></button>
     </div>
 </div>

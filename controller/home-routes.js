@@ -48,4 +48,29 @@ router.get("/dashboard", async (req, res) => {
     };
 });
 
+router.get("/store", async (req, res) => {
+    try {
+        if (!req.session.logged_in) {
+            res.redirect("/login");
+            return;
+        };
+
+        const userId = req.session.user_id;
+
+        const [userData, petData] = await Promise.all([
+            User.findByPk(userId),
+            Pet.findAll({
+                where: {
+                    user_id: userId,
+                },
+            }),
+        ]);
+
+        const pets = petData.map((pet) => pet.get({ plain: true }));
+        res.render("store", {logged_in:req.session.logged_in, username:userData.username, petCount:userData.petCount, pets: pets});
+    } catch (error) {
+        res.status(500).json(error);
+    };
+});
+
 module.exports = router;
