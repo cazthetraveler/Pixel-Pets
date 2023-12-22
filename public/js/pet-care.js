@@ -4,6 +4,7 @@ const playBtn = document.querySelector("#play");
 
 const animGif = document.querySelector("#pet-gif");
 const petType = document.querySelector("#pet-type").dataset.pettype;
+const petColor = document.querySelector("#pet-type").dataset.petcolor;
 
 let action;
 
@@ -29,18 +30,20 @@ const feedPet = async (event) => {
             case "Cheese":
             case "Carrot":
             case "Soop":
+            case "Cookie":
+            case "Lettuce":
                 if (favoriteFood == food) {
                     hunger_level += 15;
-                    react = "favefood"
+                    react = "fave-food"
                 } else if (hatedFood == food) {
                     friendship_level -= 10;
                     hunger_level += 5;
-                    react = "hatefood"
+                    react = "hate-food"
                 } else if (hunger_level === 100) {
                     alert("Your pet is full!!");
                 } else {
                     hunger_level += 5;
-                    react = "normfood"
+                    react = "norm-food"
                 }
                 fetchBody = JSON.stringify({action, hunger_level, friendship_level});
             break;
@@ -56,7 +59,7 @@ const feedPet = async (event) => {
             });
 
             if (response.ok) {
-                animGif.setAttribute("src", "/images/pets/pixel_" + petType + "_" + react + "_anim.gif"); //changes gif animation to a food reaction for a few seconds before refreshing :PP
+                animGif.setAttribute("src", "/images/pets/" + petType + "/" + petColor + "/" + react + ".gif"); //changes gif animation to a food reaction for a few seconds before refreshing :PP
                 setTimeout(() => {
                     document.location.replace(`/pets/${petId}`);
                 }, 2500);
@@ -88,13 +91,11 @@ const napPet = async (event) => {
         });
 
         if (response.ok) {
-            animGif.setAttribute("src", "/images/pets/pixel_" + petType + "_sleep_anim.gif"); //changes gif animation to sleep for a few seconds before refreshing :PP
+            animGif.setAttribute("src", "/images/pets/" + petType + "/" + petColor + "/" + "sleep.gif" ); //changes gif animation to sleep for a few seconds before refreshing :PP
             setTimeout(() => {
                 document.location.replace(`/pets/${petId}`);
             }, 2500);
-        } //else {
-        //     alert("Failed to sleep!");
-        // };
+        };
     } else if (energy_level === 100) {
         alert("Your pet is full of energy!!");
     };
@@ -122,9 +123,10 @@ const playPet = async (event) => {
         });
 
         if (response.ok) {
-            document.location.replace(`/pets/${petId}`);
-        } else {
-            alert("Failed to play!");
+            animGif.setAttribute("src", "/images/pets/" + petType + "/" + petColor + "/" + "play.gif"); //changes gif animation to a food reaction for a few seconds before refreshing :PP
+            setTimeout(() => {
+                document.location.replace(`/pets/${petId}`);
+            }, 2500);
         };
     } else if (hunger_level <=10 || energy_level <= 10) {
         alert("Your pet is not in the mood to play.");
@@ -171,3 +173,15 @@ if (friendshipLv >= 50) {
 } else if (friendshipLv >= 0) {
     friendshipEl.style.backgroundColor = "red";
 };
+
+// add a hat to pet, not fully there yet, this is just a concept :PP
+
+// const hatBtn = document.querySelector(".hat");
+
+// const addHat = () => {
+//     const hat = document.querySelector("#hat-gif");
+//     const currentDisplay = hat.style.display;
+//     hat.style.display = currentDisplay === "none" ? "block" : "none";
+// };
+
+// hatBtn.addEventListener("click", addHat);

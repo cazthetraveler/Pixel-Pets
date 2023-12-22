@@ -2,7 +2,7 @@ const addPetBtn = document.querySelector("#add-pet");
 const petCreation = document.querySelector(".pet-creation");
 const closeBtnCreate = document.querySelector("#create-close");
 
-const foods = ["Cheese", "Carrot", "Soop"];
+const foods = ["Cheese", "Carrot", "Soop", "Cookie", "Lettuce"];
 
 addPetBtn.addEventListener("click", function() {
     petCreation.style.display = "block";
@@ -27,6 +27,8 @@ const petForm = async (event) => {
 
     const pet_type = document.querySelector("[name='pet-type']:checked").value;
     const pet_name = document.querySelector("#pet-name").value.trim();
+    const pet_color = document.querySelector("#pet-color").value;
+
     const favorite_food = foods[faveFood(foods)];
     const hated_food = filterFood(foods, favorite_food);
 
@@ -35,7 +37,7 @@ const petForm = async (event) => {
     if (pet_type && pet_name) {
         const response = await fetch("/api/pets", {
             method: "POST",
-            body: JSON.stringify({pet_type, pet_name, favorite_food, hated_food}),
+            body: JSON.stringify({pet_type, pet_color, pet_name, favorite_food, hated_food}),
             headers: {"Content-Type": "application/json"},
         });
 

@@ -18,7 +18,7 @@
             {{#each pets as |pet|}}
             <div class="pet">
                 <a href="/pets/{{pet.id}}">
-                    <img class="pet-portrait" width="150" height="150" src="/images/pets/pixel_{{pet.pet_type}}.png" alt="{{pet.pet_type}} portrait">
+                    <img class="pet-portrait" width="150" height="150" src="/images/pets/{{pet.pet_type}}/{{pet.pet_color}}/pixel_{{pet.pet_type}}.png" alt="{{pet.pet_type}} portrait">
                 </a>
                 <h3>{{pet.pet_name}} the {{pet.pet_type}}</h3>
                 {{#checkHunger pet.hunger_level}}
@@ -49,18 +49,31 @@
                     <input type="radio" name="pet-type" value="Mouse" id="1">
                     <img width="100" height="100" src="/images/pets/pixel_mouse.png" alt="pixel mouse portrait">
                 </label>
-                {{!-- <label>
+                <label>
                     <input type="radio" name="pet-type" value="Pig" id="2">
-                    <img src="" alt="pixel pig portrait">
+                    <img width="100" height="100" src="/images/pets/pixel_pig.png" alt="pixel pig portrait">
                 </label>
                 <label>
                     <input type="radio" name="pet-type" value="Tiger" id="3">
-                    <img src="" alt="pixel tiger portrait">
+                    <img width="100" height="100" src="/images/pets/pixel_tiger.png" alt="pixel tiger portrait">
+                </label>
+                {{!-- <label>
+                    <input type="radio" name="pet-type" value="Penguin" id="4">
+                    <img width="100" height="100" src="/images/pets/pixel_penguin.png" alt="pixel penguin portrait">
                 </label> --}}
                 {{!-- so far, only the mouse has the most pictures and animations --}}
             </div>
 
-            <div>
+            <div class="choose-pet-color">
+                <label for="pet-color">Choose a color:</label>
+                <select id="pet-color" name="pet-color">
+                    <option value="white">White</option>
+                    <option value="pink">Pink</option>
+                    <option value="orange">Orange</option>
+                </select>
+            </div>
+
+            <div class="enter-name">
                 <label for="pet-name">Enter a name:</label>
                 <input type="text" id="pet-name">
             </div>
@@ -75,7 +88,7 @@
     <div class="modal-container"> 
         <form id="delete-pet-form">
             <h2>Select a pet!</h2>
-            <div>
+            <div class="select-pet-delete">
                 <label for="sel-pet-del">Choose a pet:</label>
                 <select id="sel-pet-del" name="sel-pet-del">
                     {{#if pets}}
@@ -97,3 +110,6 @@
 {{#if pets}}
 <script src="/js/delete-pet.js"></script>
 {{/if}}
+
+{{!-- later if i get the store and inventory system working, i want to add like special colors that could be applied to the pets. Like a special rainbow color
+or a holiday theme. Or maybe i can figure out how to add little hats to the pets lol --}}

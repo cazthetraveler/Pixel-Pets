@@ -26,10 +26,10 @@ Pet.init(
             type: DataTypes.STRING,
             allowNull: false,
         },
-        // pet_color: {
-        //     type: DataTypes.STRING,
-        //     allowNull: false,
-        // },
+        pet_color: {
+            type: DataTypes.STRING,
+            allowNull: false,
+        },
         hunger_level: {
             type: DataTypes.INTEGER,
             allowNull: false,

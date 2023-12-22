@@ -1,30 +1,6 @@
-{{!-- <div class="pet-dashboard">
-    <div class="pet-image"> --}}
-        {{!-- <img src="https://www.placehold.co/300" alt="pet placeholder image, maybe use gif for animation"> --}}
-        {{!-- <img width="250" height="250" src="/images/pets/pixel_{{pet.pet_type}}.png" alt="{{pet.pet_type}} portrait, will be a gif later :PP"> --}}
-    {{!-- </div>
-    <div class="pet-specs">
-        <div class="pet-info">
-            <h2 class="pet-name">{{pet.pet_name}} the {{pet.pet_type}}</h2>
-            <div class="stats">
-                <h3 id="hunger" value="{{pet.hunger_level}}">Hunger Level: {{pet.hunger_level}} / 100</h3> --}}
-                {{!-- <div class="status-bar">
-                    <div value="{{pet.hunger_level}}" class="hunger-bar"></div>
-                </div> maybe we could add this another time :PP --}}
-                {{!-- <h3 id="energy" value="{{pet.energy_level}}">Energy Level: {{pet.energy_level}} / 100</h3>
-                <h3 id="friendship" value="{{pet.friendship_level}}">Friendship Level: {{pet.friendship_level}} / 255</h3>
-            </div>
-        </div>
-    </div>
-</div> --}}
-
-
-
-{{!-- okay lets redo this because it's not that good lolll --}}
-
 <div class="pet-dashboard">
     <div class="pet-specs">
-        <h2 id="pet-type" data-pettype="{{pet.pet_type}}">{{pet.pet_name}} the {{pet.pet_type}}</h2>
+        <h2 id="pet-type" data-pettype="{{pet.pet_type}}" data-petcolor="{{pet.pet_color}}">{{pet.pet_name}} the {{pet.pet_type}}</h2>
         <div class="pet-stats">
             <div class="hunger-stats">
                 <h3>Hunger:</h3>
@@ -53,7 +29,8 @@
         </div>
     </div>
     <div class="pet-room">
-        <img id="pet-gif" src="/images/pets/pixel_{{pet.pet_type}}_anim.gif" alt="gif of {{pet.pet_type}} goes here :)" oncontextmenu="return false;" draggable="false">
+        <img id="pet-gif" src="/images/pets/{{pet.pet_type}}/{{pet.pet_color}}/default.gif" alt="gif of {{pet.pet_type}} goes here :)" oncontextmenu="return false;" draggable="false">
+        {{!-- <img id="hat-gif" src="/images/pets/{{pet.pet_type}}/hats/default.gif" alt="gif of hat goes over pet" oncontextmenu="return false;" draggable="false"> --}}
     </div>
     <div class="pet-actions">
         <h3>Food:</h3>
@@ -61,12 +38,19 @@
             <button class="feed" value="Cheese" type="button">Cheese</button>
             <button class="feed" value="Carrot" type="button">Carrot</button>
             <button class="feed" value="Soop" type="button">Soop</button>
+            <button class="feed" value="Cookie" type="button">Cookie</button>
+            <button class="feed" value="Lettuce" type="button">Lettuce</button>
         </div>
         <h3>Sleep:</h3>
         <button id="nap" type="button"><i class="fa-solid fa-moon"></i></button>
         <h3>Play:</h3>
         <button id="play" type="button"><i class="fa-solid fa-gamepad"></i></button>
+
+        {{!-- <div class="pet-dress">
+            <button class="hat" type="button">Hat</button>
+        </div> --}}
     </div>
+
 </div>
 
 <script src="/js/pet-care.js"></script>

@@ -14,6 +14,7 @@ router.post("/", async (req, res) => {
         const dbPetData = await Pet.create({
             pet_name: req.body.pet_name,
             pet_type: req.body.pet_type,
+            pet_color: req.body.pet_color,
             user_id: req.session.user_id,
             favorite_food: req.body.favorite_food,
             hated_food: req.body.hated_food,
