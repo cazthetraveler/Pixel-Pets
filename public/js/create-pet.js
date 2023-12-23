@@ -51,3 +51,17 @@ const petForm = async (event) => {
 };
 
 document.querySelector("#create-pet-form").addEventListener("submit", petForm);
+
+function changeColor() {
+    let selectedColor = document.querySelector("#pet-color").value;
+
+    let mousePortrait = document.querySelector("#mouse-portrait");
+    // let pigPortrait = document.querySelector("#pig-portrait");
+    // let tigerPortrait = document.querySelector("#tiger-portrait");
+    let penguinPortrait = document.querySelector("#penguin-portrait");
+
+    mousePortrait.setAttribute("src", "/images/pets/mouse/" + selectedColor + "/pixel_mouse.png");
+    // pigPortrait.setAttribute("src", "/images/pets/pig/" + selectedColor + "/pixel_pig.png");
+    // tigerPortrait.setAttribute("src", "/images/pets/tiger/" + selectedColor + "/pixel_tiger.png");
+    penguinPortrait.setAttribute("src", "/images/pets/penguin/" + selectedColor + "/pixel_penguin.png");
+};

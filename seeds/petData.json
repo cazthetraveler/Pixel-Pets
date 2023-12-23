@@ -1,0 +1,10 @@
+[
+    {
+        "user_id": "1",
+        "pet_name": "Berry",
+        "pet_type": "Mouse",
+        "pet_color": "Rainbow",
+        "favorite_food": "Cheese",
+        "hated_food": "Pie"
+    }
+]

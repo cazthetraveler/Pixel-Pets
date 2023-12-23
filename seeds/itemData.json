@@ -1,0 +1,27 @@
+[
+    {
+        "name": "Cheese",
+        "description": "A delicious dairy product that can be eaten as a snack.",
+        "type": "Food"
+    },
+    {
+        "name": "Carrot",
+        "description": "A nice root vegetable that promotes healthy vision.",
+        "type": "Food"
+    },
+    {
+        "name": "Soop",
+        "description": "A nice and warm broth to keep you full.",
+        "type": "Food"
+    },
+    {
+        "name": "Cookie",
+        "description": "A tasty snack that everyone loves!",
+        "type": "Food"
+    },
+    {
+        "name": "Lettuce",
+        "description": "A leafy edible plant that can be eaten by itself.",
+        "type": "Food"
+    }
+]
