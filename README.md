@@ -28,4 +28,4 @@ Any hopes for the future is the ability to change the pet's appearance to any co
 
 ## Heroku
 
-[Deployed Heroku Link](https://pixel-pets-8842a450b767.herokuapp.com/)https://pixel-pets-8842a450b767.herokuapp.com/
+[Deployed Heroku Link](https://pixel-pets-8842a450b767.herokuapp.com/)
