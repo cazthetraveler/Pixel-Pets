@@ -1,133 +1,82 @@
-<div class="dashboard">
-  <div class="bar">
-    <h2>Welcome {{username}}!</h2>
-    {{!-- <h2>{{petCount}}</h2> --}}
-    <div class="pet-buttons">
-      {{#checkPetCount petCount}}{{/checkPetCount}}
-      {{#if pets}}
-        <button type="button" id="delete-pet"><i
-            class="fa-solid fa-trash"
-          ></i></button>
-      {{/if}}
-    </div>
-  </div>
-
-  <div class="pets-view">
-    {{#if pets}}
-      <h2>Your Pets:</h2>
-      <div class="your-pets">
-        {{#each pets as |pet|}}
-          <div class="pet">
-            <a href="./pets/{{pet.id}}">
-              <img
-                class="pet-portrait"
-                width="150"
-                height="150"
-                src="/images/pets/{{pet.pet_type}}/{{pet.pet_color}}/pixel_{{pet.pet_type}}.png"
-                alt="{{pet.pet_type}} portrait"
-              />
-            </a>
-            <h3>{{pet.pet_name}} the {{pet.pet_type}}</h3>
-            {{#checkHunger pet.hunger_level}}{{/checkHunger}}
-            {{#checkEnergy pet.energy_level}}{{/checkEnergy}}
-            {{#checkFriendship pet.friendship_level}}{{/checkFriendship}}
-          </div>
-        {{/each}}
-      </div>
-    {{else}}
-      <h2>No pets yet! Create one!</h2>
-    {{/if}}
-  </div>
-</div>
-
-{{! we should change this to a modal when we start styling }}
-
-<div class="pet-creation modal">
-  <button type="button" id="create-close"><i
-      class="fa-solid fa-xmark"
-    ></i></button>
-  <div class="modal-container">
-    <form id="create-pet-form">
-      <h2>Select a pet!</h2>
-      <div class="pet-choices">
-        <label>
-          <input type="radio" name="pet-type" value="mouse" id="1" />
-          <img
-            id="mouse-portrait"
-            width="100"
-            height="100"
-            src="/images/pets/mouse/white/pixel_mouse.png"
-            alt="pixel mouse portrait"
-          />
-        </label>
-        {{! <label>
-                    <input type="radio" name="pet-type" value="Pig" id="2">
-                    <img id="pig-portrait" width="100" height="100" src="/images/pets/pixel_pig.png" alt="pixel pig portrait">
-                </label> }}
-        {{! <label>
-                    <input type="radio" name="pet-type" value="Tiger" id="3">
-                    <img id="tiger-portrait" width="100" height="100" src="/images/pets/pixel_tiger.png" alt="pixel tiger portrait">
-                </label> }}
-        <label>
-          <input type="radio" name="pet-type" value="penguin" id="4" />
-          <img
-            id="penguin-portrait"
-            width="100"
-            height="100"
-            src="/images/pets/penguin/white/pixel_penguin.png"
-            alt="pixel penguin portrait"
-          />
-        </label>
-        {{! so far, only the mouse has the most pictures and animations }}
-      </div>
-
-      <div class="choose-pet-color">
-        <label for="pet-color">Choose a color:</label>
-        <select id="pet-color" name="pet-color" onchange="changeColor()">
-          <option value="white">White</option>
-          <option value="pink">Pink</option>
-          <option value="orange">Orange</option>
-        </select>
-      </div>
-
-      <div class="enter-name">
-        <label for="pet-name">Enter a name:</label>
-        <input type="text" id="pet-name" />
-      </div>
-
-      <button type="submit">Create</button>
-    </form>
-  </div>
-</div>
-
-<div class="pet-deletion modal">
-  <button type="button" id="delete-close"><i
-      class="fa-solid fa-xmark"
-    ></i></button>
-  <div class="modal-container">
-    <form id="delete-pet-form">
-      <h2>Select a pet!</h2>
-      <div class="select-pet-delete">
-        <label for="sel-pet-del">Choose a pet:</label>
-        <select id="sel-pet-del" name="sel-pet-del">
-          {{#if pets}}
+<main class="dashboard">
+    <section class="pet-interface">
+        <section class="user-stats">
+            <h2>{{username}}'s Page</h2>
+            <h2>Pet Count: {{petCount}}</h2>
+        </section>
+        <section class="pet-view">
+            {{#if pets}}
             {{#each pets as |pet|}}
-              <option value="{{pet.id}}">{{pet.pet_name}}</option>
+            <div class="pet">
+                <a href="/pets/{{pet.id}}">
+                    <img src="/images/pets/{{pet.pet_type}}/{{pet.pet_color}}/pixel_{{pet.pet_type}}.png" />
+                    <h3>{{pet.pet_name}}</h3>
+                    {{#checkHunger pet.hunger_level}}{{/checkHunger}}
+                    {{#checkEnergy pet.energy_level}}{{/checkEnergy}}
+                    {{#checkFriendship pet.friendship_level}}{{/checkFriendship}}
+                </a>
+            </div>
             {{/each}}
-          {{/if}}
-        </select>
-      </div>
+            {{else}}
+            <h2>Create a Pet by hovering over your username dropdown list!</h2>
+            {{/if}}
+        </section>
+    </section>
+    <section class="friends-list">
+        <h2>Friends List</h2>
+    </section>
+</main>
 
-      <button type="submit">Delete</button>
-    </form>
-  </div>
-</div>
+{{!-- modal --}}
+
+<section class="modal">
+
+    <section class="pet-creation">
+        <button class="material-symbols-outlined close-modal-button">close</button>
+        <form id="create-pet-form">
+            <h2>Pet Creation</h2>
+            <section class="pet-choices">
+                <h3>Select a Pet!</h3>
+                <label>
+                    <input type="radio" name="pet-type" value="mouse" id="1" />
+                    <img id="mouse-portrait" src="/images/pets/mouse/white/pixel_mouse.png" alt="pixel mouse portrait" />
+                </label>
+            </section>
+            <section class="pet-colors">
+                <label for="pet-color">Choose a Color:</label>
+                <select id="pet-color" name="pet-color" onChange="changeColor()">
+                    <option value="white">White</option>
+                    <option value="pink">Pink</option>
+                    <option value="orange">Orange</option>
+                    <option value="strawberry">Strawberry - LIMITED TIME!!</option>
+                </select>
+            </section>
+            <section class="enter-name">
+                <label for="pet-name">Enter a Name:</label>
+                <input type="text" id="pet-name" maxlength="20" />
+            </section>
+            <button type="submit">CREATE</button>
+        </form>
+    </section>
+    <section class="pet-deletion">
+        <button class="material-symbols-outlined close-modal-button">close</button>
+        <form id="delete-pet-form">
+            <h2>Pet Deletion</h2>
+            <label id="sel-pet-del">Select a Pet!</label>
+            <select id="sel-pet-del">
+                {{#if pets}}
+                    {{#each pets as |pet|}}
+                        <option value="{{pet.id}}">{{pet.pet_name}}</option>
+                    {{/each}}
+                {{/if}}
+            </select>
+            <button type="submit">DELETE</button>
+        </form>
+    </section>
+</section>
 
 {{#checkPetCountScript petCount}}{{/checkPetCountScript}}
 
 {{#if pets}}
   <script src="/js/delete-pet.js"></script>
 {{/if}}
-
-{{! later if i get the store and inventory system working, i want to add like special colors that could be applied to the pets. Like a special rainbow color
-or a holiday theme. Or maybe i can figure out how to add little hats to the pets lol }}
