@@ -1,81 +1,50 @@
-<div class="pet-dashboard">
-  <div class="pet-specs">
-    <h2
-      id="pet-type"
-      data-pettype="{{pet.pet_type}}"
-      data-petcolor="{{pet.pet_color}}"
-    >{{pet.pet_name}} the {{pet.pet_type}}</h2>
-    <div class="pet-stats">
-      <div class="hunger-stats">
-        <h3>Hunger:</h3>
-        <div class="hunger-bar">
-          <div
-            class="hunger-load"
-            id="hunger"
-            value="{{pet.hunger_level}}"
-            style="width:{{pet.hunger_level}}%"
-          ></div>
+<main class="pet-dashboard">
+    <section class="pet-specs">
+      <h2 id="pet-type" data-pettype="{{pet.pet_type}}" data-petcolor="pet.pet_color">{{pet.pet_name}} the {{pet.pet_type}}</h2>
+      <div class="pet-stats">
+        <div class="hunger-stats">
+          <h3>Hunger:</h3>
+          <div class="hunger-bar">
+            <div class="hunger-load" id="hunger" value="{{pet.hunger_level}}" style="width:{{pet.hunger_level}}%"></div>
+          </div>
+        </div>
+        <div class="energy-stats">
+          <h3>Energy:</h3>
+          <div class="energy-bar">
+            <div class="energy-load" id="energy" value="{{pet.energy_level}}" style="width:{{pet.energy_level}}%"></div>
+          </div>
+        </div>
+        <div class="friendship-stats">
+          <h3>Friendship:</h3>
+          <div class="friendship-bar">
+            <div class="friendship-load" id="friendship" value="{{pet.friendship_level}}" style="width:{{pet.friendship_level}}%"></div>
+          </div>
         </div>
       </div>
-      <div class="energy-stats">
-        <h3>Energy:</h3>
-        <div class="energy-bar">
-          <div
-            class="energy-load"
-            id="energy"
-            value="{{pet.energy_level}}"
-            style="width:{{pet.energy_level}}%"
-          ></div>
-        </div>
+      <div>
+        <h2>Likes:</h2>
+        <p>{{pet.favorite_food}}</p>
+        <h2>Dislikes:</h2>
+        <p>{{pet.hated_food}}</p>
       </div>
-      <div class="hunger-stats">
-        <h3>Friendship:</h3>
-        <div class="friendship-bar">
-          <div
-            class="friendship-load"
-            id="friendship"
-            value="{{pet.friendship_level}}"
-            style="width:{{pet.friendship_level}}%"
-          ></div>
-        </div>
+    </section>
+    <section class="pet-room">
+      <img id="pet-gif" src="/images/pets/{{pet.pet_type}}/{{pet.pet_color}}/default.gif" oncontextmenu="return false" draggable="false" />
+    </section>
+    <section class="pet-buttons">
+      <h2>Food:</h2>
+      <div class="food-buttons">
+        <button class="material-symbols-outlined" title="Cheese" value="Cheese">local_pizza</button>
+        <button class="material-symbols-outlined" title="Carrot" value="Carrot">nutrition</button>
+        <button class="material-symbols-outlined" title="Soop" value="Soop">soup_kitchen</button>
+        <button class="material-symbols-outlined" title="Cookie" value="Cookie">cake</button>
+        <button class="material-symbols-outlined" title="Lettuce" value="Lettuce">bakery_dining</button>
       </div>
-    </div>
-    <div class="pet-likes">
-      <h3>Likes:</h3>
-      <p class="favorite-food">{{pet.favorite_food}}</p>
-      <h3>Disikes:</h3>
-      <p class="hated-food">{{pet.hated_food}}</p>
-    </div>
-  </div>
-  <div class="pet-room">
-    <img
-      id="pet-gif"
-      src="/images/pets/{{pet.pet_type}}/{{pet.pet_color}}/default.gif"
-      alt="gif of {{pet.pet_type}} goes here :)"
-      oncontextmenu="return false;"
-      draggable="false"
-    />
-    {{!-- <img id="hat-gif" src="/images/pets/{{pet.pet_type}}/hats/default.gif" alt="gif of hat goes over pet" oncontextmenu="return false;" draggable="false"> --}}
-  </div>
-  <div class="pet-actions">
-    <h3>Food:</h3>
-    <div class="feed-pet">
-      <button class="feed" value="Cheese" type="button">Cheese</button>
-      <button class="feed" value="Carrot" type="button">Carrot</button>
-      <button class="feed" value="Soop" type="button">Soop</button>
-      <button class="feed" value="Cookie" type="button">Cookie</button>
-      <button class="feed" value="Lettuce" type="button">Lettuce</button>
-    </div>
-    <h3>Sleep:</h3>
-    <button id="nap" type="button"><i class="fa-solid fa-moon"></i></button>
-    <h3>Play:</h3>
-    <button id="play" type="button"><i class="fa-solid fa-gamepad"></i></button>
-
-    {{! <div class="pet-dress">
-            <button class="hat" type="button">Hat</button>
-        </div> }}
-  </div>
-
-</div>
+      <h2>Play:</h2>
+      <button type="button" id="play" class="material-symbols-outlined">videogame_asset</button>
+      <h2>Sleep:</h2>
+      <button type="button" id="nap" class="material-symbols-outlined">bedtime</button>
+    </section>
+</main>
 
 <script src="/js/pet-care.js"></script>
