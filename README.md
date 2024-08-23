@@ -4,6 +4,8 @@
 
 Pixel Pets is a basic virtual pet game, where users can create pets, name them, and be able to interact with them!
 
+Only available for desktop viewing.
+
 ## Table of Contents
 
 - [Installation](#installation)
