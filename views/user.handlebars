@@ -1,0 +1,22 @@
+<main class="dashboard">
+    <section class="pet-interface">
+        <section class="user-stats">
+            <h2>{{user}}'s Page</h2>
+            <h2>Pet Count: {{petCount}}</h2>
+        </section>
+        <section class="pet-view">
+            {{#if pets}}
+            {{#each pets as |pet|}}
+            <div class="pet">
+                <a href="/pets/{{pet.id}}">
+                    <img src="/images/pets/{{pet.pet_type}}/{{pet.pet_color}}/pixel_{{pet.pet_type}}.png" />
+                    <h3>{{pet.pet_name}}</h3>
+                </a>
+            </div>
+            {{/each}}
+            {{else}}
+            <h2>{{user}} does not have any pets yet!</h2>
+            {{/if}}
+        </section>
+    </section>
+</main>
