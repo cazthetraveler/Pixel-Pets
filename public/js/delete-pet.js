@@ -4,10 +4,12 @@ const closeBtnDelete = document.querySelector(".close-modal-button");
 
 delPetBtn.addEventListener("click", function () {
   petDeletion.style.display = "block";
+  document.querySelector(".modal").style.display = "flex";
 });
 
 closeBtnDelete.addEventListener("click", function () {
   petDeletion.style.display = "none";
+  document.querySelector(".modal").style.display = "none";
 });
 
 const delPetForm = async (event) => {
