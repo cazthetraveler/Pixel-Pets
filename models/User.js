@@ -19,6 +19,7 @@ User.init(
         username: {
             type: DataTypes.STRING,
             allowNull: false,
+            unique: true
         },
         password: {
             type: DataTypes.STRING,
@@ -35,7 +36,7 @@ User.init(
                 min: 0,
                 max: 3,
             },
-        },
+        }
     },
     {
         hooks: {
