@@ -1,78 +1,83 @@
 <main class="dashboard">
-    <section class="pet-interface">
-        <section class="user-stats">
-            <h2>{{username}}'s Page</h2>
-            <h2>Pet Count: {{petCount}}</h2>
-        </section>
-        <section class="pet-view">
-            {{#if pets}}
-            {{#each pets as |pet|}}
-            <div class="pet">
-                <a href="/pets/{{pet.id}}">
-                    <img src="/images/pets/{{pet.pet_type}}/{{pet.pet_color}}/pixel_{{pet.pet_type}}.png" />
-                    <h3>{{pet.pet_name}}</h3>
-                    {{#checkHunger pet.hunger_level}}{{/checkHunger}}
-                    {{#checkEnergy pet.energy_level}}{{/checkEnergy}}
-                    {{#checkFriendship pet.friendship_level}}{{/checkFriendship}}
-                </a>
-            </div>
-            {{/each}}
-            {{else}}
-            <h2>Create a Pet by hovering over your username dropdown list!</h2>
-            {{/if}}
-        </section>
+  <section class="pet-interface">
+    <section class="user-stats">
+      <h2>{{username}}'s Page</h2>
+      <h2>Pet Count: {{petCount}}</h2>
     </section>
-    <section class="friends-list">
-        <h2>Friends List</h2>
+    <section class="pet-view">
+      {{#if pets}}
+        {{#each pets as |pet|}}
+          <div class="pet">
+            <a href="/pets/{{pet.id}}">
+              <img
+                src="/images/pets/{{pet.pet_type}}/{{pet.pet_color}}/pixel_{{pet.pet_type}}.png"
+              />
+              <h3>{{pet.pet_name}}</h3>
+              {{#checkHunger pet.hunger_level}}{{/checkHunger}}
+              {{#checkEnergy pet.energy_level}}{{/checkEnergy}}
+              {{#checkFriendship pet.friendship_level}}{{/checkFriendship}}
+            </a>
+          </div>
+        {{/each}}
+      {{else}}
+        <h2>Create a Pet by hovering over your username dropdown list!</h2>
+      {{/if}}
     </section>
+  </section>
+  <section class="friends-list">
+    <h2>Friends List</h2>
+  </section>
 </main>
 
-{{!-- modal --}}
+{{! modal }}
 
 <section class="modal">
-
-    <section class="pet-creation">
-        <button class="material-symbols-outlined close-modal-button">close</button>
-        <form id="create-pet-form">
-            <h2>Pet Creation</h2>
-            <section class="pet-choices">
-                <h3>Select a Pet!</h3>
-                <label>
-                    <input type="radio" name="pet-type" value="mouse" id="1" />
-                    <img id="mouse-portrait" src="/images/pets/mouse/white/pixel_mouse.png" alt="pixel mouse portrait" />
-                </label>
-            </section>
-            <section class="pet-colors">
-                <label for="pet-color">Choose a Color:</label>
-                <select id="pet-color" name="pet-color" onChange="changeColor()">
-                    <option value="white">White</option>
-                    <option value="pink">Pink</option>
-                    <option value="orange">Orange</option>
-                    <option value="strawberry">Strawberry - LIMITED TIME!!</option>
-                </select>
-            </section>
-            <section class="enter-name">
-                <label for="pet-name">Enter a Name:</label>
-                <input type="text" id="pet-name" maxlength="20" />
-            </section>
-            <button type="submit">CREATE</button>
-        </form>
-    </section>
-    <section class="pet-deletion">
-        <button class="material-symbols-outlined close-modal-button">close</button>
-        <form id="delete-pet-form">
-            <h2>Pet Deletion</h2>
-            <label id="sel-pet-del">Select a Pet!</label>
-            <select id="sel-pet-del">
-                {{#if pets}}
-                    {{#each pets as |pet|}}
-                        <option value="{{pet.id}}">{{pet.pet_name}}</option>
-                    {{/each}}
-                {{/if}}
-            </select>
-            <button type="submit">DELETE</button>
-        </form>
-    </section>
+  <section class="pet-creation">
+    <button class="material-symbols-outlined close-modal-button">close</button>
+    <form id="create-pet-form">
+      <h2>Pet Creation</h2>
+      <section class="pet-choices">
+        <h3>Select a Pet!</h3>
+        <label>
+          <input type="radio" name="pet-type" value="mouse" id="1" />
+          <img
+            id="mouse-portrait"
+            src="/images/pets/mouse/white/pixel_mouse.png"
+            alt="pixel mouse portrait"
+          />
+        </label>
+      </section>
+      <section class="pet-colors">
+        <label for="pet-color">Choose a Color:</label>
+        <select id="pet-color" name="pet-color" onChange="changeColor()">
+          <option value="white">White</option>
+          <option value="pink">Pink</option>
+          <option value="orange">Orange</option>
+          <option value="strawberry">Strawberry - LIMITED TIME!!</option>
+        </select>
+      </section>
+      <section class="enter-name">
+        <label for="pet-name">Enter a Name:</label>
+        <input type="text" id="pet-name" maxlength="20" />
+      </section>
+      <button type="submit">CREATE</button>
+    </form>
+  </section>
+  <section class="pet-deletion">
+    <button class="material-symbols-outlined close-modal-button">close</button>
+    <form id="delete-pet-form">
+      <h2>Pet Deletion</h2>
+      <label id="sel-pet-del">Select a Pet!</label>
+      <select id="sel-pet-del">
+        {{#if pets}}
+          {{#each pets as |pet|}}
+            <option value="{{pet.id}}">{{pet.pet_name}}</option>
+          {{/each}}
+        {{/if}}
+      </select>
+      <button type="submit">DELETE</button>
+    </form>
+  </section>
 </section>
 
 {{#checkPetCountScript petCount}}{{/checkPetCountScript}}

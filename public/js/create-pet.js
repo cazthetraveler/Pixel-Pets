@@ -5,11 +5,13 @@ const closeBtnCreate = document.querySelector(".close-modal-button");
 const foods = ["Cheese", "Carrot", "Soop", "Cookie", "Lettuce"];
 
 addPetBtn.addEventListener("click", function () {
-  petCreation.style.display = "block";
+  petCreation.style.display = "flex";
+  document.querySelector(".modal").style.display = "flex";
 });
 
 closeBtnCreate.addEventListener("click", function () {
   petCreation.style.display = "none";
+  document.querySelector(".modal").style.display = "none";
 });
 
 function faveFood(foods) {
