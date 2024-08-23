@@ -21,6 +21,9 @@ Pet.init(
         pet_name: {
             type: DataTypes.STRING,
             allowNull: false,
+            validate: {
+                len: [2, 20]
+            }
         },
         pet_type: {
             type: DataTypes.STRING,
