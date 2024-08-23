@@ -1,16 +1,436 @@
+@import url('https://fonts.googleapis.com/css2?family=Comic+Neue:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap');
+
+:root {
+    --black: #1c1c1c;
+    --white: #f2f2f2;
+    --pink: #FF69B4;
+    --darkpink: #da448f;
+    --yellow: #FFD700;
+    --blue: #accdff;
+}
+
 * {
     margin: 0;
     padding: 0;
     font-family: sans-serif;
 }
 
-footer {
-    background-color: black;
-    color: palevioletred;
-    text-align: center;
+/* HEADER */
+
+header {
+    background-color: var(--pink);
     padding: 1rem;
 }
 
-.pet-creation {
+nav {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    gap: 1.5rem;
+    list-style-type: none;
+}
+
+nav a, nav button {
+    border: none;
+    background-color: inherit;
+    color: var(--white);
+    font-size: 1.25rem;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+nav button {
+    display: flex;
+    align-items: center;
+}
+
+nav a:hover, nav button:hover {
+    color: var(--black);
+    transition: 0.3s;
+}
+
+.dropdown {
+    position: relative;
+}
+
+.user-options {
     display: none;
 }
+
+.dropdown:hover .user-options {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    position: absolute;
+    background-color: var(--pink);
+    padding: 1rem;
+    max-height: 250px;
+    width: 250px;
+    z-index: 3;
+}
+
+footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--black);
+    padding: 1rem;
+    color: var(--white);
+}
+
+footer a {
+    color: var(--pink);
+    text-decoration: none;
+}
+
+footer a:hover {
+    color: var(--white);
+    transition: 0.3s;
+}
+
+/* HOMEPAGE */
+
+.homepage {
+    background-image: url('https://www.placeholder.co/2000x1000');
+    background-position: center;
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+}
+
+.play-button {
+    margin-top: auto;
+    margin-bottom: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 10px solid var(--darkpink);
+    border-radius: 20px;
+    background-color: var(--pink);
+    padding: 0.5rem 0.75rem;
+    height: 40px;
+    width: 200px;
+    -webkit-text-stroke: 2px var(--darkpink);
+    color: white;
+    font-family: 'Comic Neue', cursive;
+    font-size: 2rem;
+    font-weight: 700;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.play-button:hover {
+    transform: scale(110%);
+    transition: 0.3s;
+}
+
+/* LOGINPAGE */
+
+.loginpage {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2.5rem;
+    background-color: var(--darkpink);
+    height: 100vh;
+}
+
+.loginpage section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    background-color: var(--pink);
+    height: 600px;
+    width: 500px;
+    padding: 3rem 1rem;
+    border-radius: 15px;
+}
+
+.loginpage section h2 {
+    color: var(--white);
+    font-size: 2rem;
+}
+
+.loginpage section form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+}
+
+.loginpage section form div {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    width: 400px;
+}
+
+.loginpage section form div label {
+    font-size: 1.25rem;
+    color: var(--white);
+}
+
+.loginpage section form div input {
+    font-size: 1.25rem;
+    padding: 0 0.25rem;
+}
+
+.loginpage section form button {
+    border: 2px solid var(--white);
+    border-radius: 10px;
+    color: var(--white);
+    font-size: 1.25rem;
+    background-color: var(--darkpink);
+    padding: 0.35rem 0.7rem;
+    cursor: pointer;
+}
+
+.loginpage section form button:hover {
+    color: var(--darkpink);
+    background-color: var(--white);
+    transition: 0.3s;
+}
+
+/* DASHBOARD */
+
+.dashboard {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    padding: 1rem;
+    background-color: var(--darkpink);
+}
+
+.pet-interface {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: var(--white);
+    gap: 1rem;
+    width: 70%;
+    height: calc(100vh - 150px);
+    padding: 0.5rem;
+}
+
+.user-stats, .pet-view {
+    width: 100%;
+    height: 50%;
+}
+
+.pet-view {
+    display: flex;
+    justify-content: flex-start;
+    gap: 1rem;
+}
+
+.pet a {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: var(--pink);
+    padding: 0.5rem;
+    color: var(--white);
+    text-decoration: none;
+    width: 250px;
+    height: 250px;
+}
+
+.pet img {
+    height: 150px;
+    width: 150px;
+}
+
+.friends-list {
+    background-color: var(--white);
+    width: 20%;
+    height: calc(100vh - 150px);
+    padding: 0.5rem;
+}
+
+/* PET CREATION */
+
+.modal {
+    display: none;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.5);
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+    z-index: 99;
+}
+
+.close-modal-button {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    background-color: inherit;
+    border: none;
+    font-size: 2rem;
+    color: var(--white);
+    cursor: pointer;
+}
+
+.close-modal-button:hover {
+    color: var(--darkpink);
+    transition: 0.3s;
+}
+
+.pet-creation {
+    position: relative;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--pink);
+    border-radius: 1rem;
+    padding: 1.5rem;
+    width: 40%;
+    height: 50%;
+}
+
+.pet-creation h2 {
+    text-align: center;
+    font-size: 2rem;
+    color: var(--white);
+}
+
+#create-pet-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+
+#create-pet-form section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+
+#create-pet-form button {
+    border: 3px solid var(--darkpink);
+    border-radius: 10px;
+    padding: 0.25rem 2rem;
+    background-color: var(--pink);
+    color: var(--white);
+    font-size: 1.25rem;
+    cursor: pointer;
+}
+
+#create-pet-form button:hover {
+    background-color: var(--darkpink);
+    transition: 0.3s;
+}
+
+.pet-choices h3 {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--white);
+}
+
+.pet-choices img {
+    height: 100px;
+    width: 100px;
+    outline: 2px solid var(--darkpink);
+}
+
+.pet-choices input[type="radio"] {
+    -webkit-appearance: none;
+    appearance: none;
+}
+
+input[type="radio"]:hover + img {
+    outline: 3px solid var(--white);
+    transition: 0.3s;
+}
+
+.pet-choices input[type="radio"]:checked + img {
+    outline: 3px solid var(--white);
+}
+
+.pet-colors label {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--white);
+}
+
+.enter-name label {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--white);
+}
+
+/* PET DELETION */
+
+.pet-deletion {
+    display: none;
+}
+
+/* PET DASHBOARD */
+
+.pet-dashboard {
+    background-color: var(--darkpink);
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    padding: 1rem;
+}
+
+.pet-specs, .pet-buttons {
+    background-color: var(--white);
+    height: calc(100vh - 150px);
+    width: 20%;
+    padding: 1rem;
+}
+
+.hunger-bar, .energy-bar, .friendship-bar {
+    height: 1rem;
+    width: 100%;
+    border-radius: 1rem;
+    background-color: gray;
+}
+
+.hunger-load, .energy-load, .friendship-load {
+    height: 1rem;
+    border-radius: 1rem;
+    background-color: green;
+}
+
+.pet-room {
+    background-color: var(--white);
+    height: calc(100vh - 150px);
+    width: 50%;
+    padding: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.pet-buttons button {
+    border: none;
+    border-radius: 50%;
+    background-color: var(--darkpink);
+    padding: 1rem;
+    color: white;
+    cursor: pointer;
+}
+
+.pet-buttons button:hover {
+    background-color: var(--pink);
+    transition: 0.3s;
+}
+
+.food-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
