@@ -4,35 +4,40 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pixel Pets</title>
-    <link rel="icon" type="image/x-icon" href="/images/pixel-pets-logo.png">
-    <script src="https://kit.fontawesome.com/8b8c9d14eb.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="/css/main.css">
+    <meta name="keywords" content="pixel pets, virtual pet, game, pet game, pixel pets game, virtual pet game" />
+    <link rel="icon" type="image/png" href="/images/pixel-pets-logo.png">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link rel="stylesheet" href="/css/styles.css">
 </head>
 
 {{!-- https://wireframe.cc/sk9M31 --}}
 
 <body>
+    {{#if logged_in}}
     <header>
-        <div class="logo">
-            <a href="/"><img src="/images/pixel-pets-logo.png"></a>
-        </div>
         <nav>
-            <ul class="nav-links">
-                {{#if logged_in}}
-                <li><a href="/dashboard">Dashboard</a></li>
-                <li><a href="/store">Store</a></li>
-                <li><button type="button" id="logout-button">Log Out</button></li>
-                {{else}}
-                <li><a href="/">Home</a></li>
-                <li><a href="/login">Login | Register</a></li>
-                {{/if}}
-            </ul>
+            <div class="dropdown">
+                <button>{{username}}<span class="material-symbols-outlined">arrow_drop_down</span></button>
+                <div class="user-options">
+                    {{#checkPetCount petCount}}{{/checkPetCount}}
+                    {{#if pets}}
+                    <button>Delete Pet</button>
+                    {{/if}}
+                </div>
+            </div>
+            <a href="/dashboard">Dashboard</a>
+            <a href="/explore">Explore</a>
+            <a href="/store">Store</a>
+            <button type="button" id="logout-button">Log Out</button>
         </nav>
     </header>
+    {{/if}}
 
     {{{body}}}
 
-    <footer>Made by <a target="_blank" href="https://github.com/cazthetraveler">Luis Olmos</a> &#40●'◡'●&#41</footer>
+    {{#if logged_in}}
+    <footer>Made by <a target="_blank" href="https://github.com/cazthetraveler">Luis Olmos</a> &#40;●'◡'●&#41;</footer>
+    {{/if}}
     
 </body>
 
