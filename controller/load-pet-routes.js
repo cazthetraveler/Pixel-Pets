@@ -24,6 +24,7 @@ router.get("/:id", async (req, res) => {
   res.render("pet", {
     logged_in: req.session.logged_in,
     username: userData.username,
+    userId: userId,
     pet: petData.get({ plain: true }),
   });
 });
